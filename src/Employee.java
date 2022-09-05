@@ -1,29 +1,20 @@
 public class Employee {
-    private String name;
-    private String surname;
-    private String patronymic;
+    private final String fullName;
+
     private int department;
     private double salary;
-    private int id; // не понятно, что с этим делать, нужен ли геттер для этого поля
+    private static int counter = 1;
+    private int id;
 
-    public Employee(String name, String surname, String patronymic, int department, double salary) {
-        this.name = name;
-        this.surname = surname;
-        this.patronymic = patronymic;
+    public Employee(String fullName, int department, double salary) {
+        this.fullName = fullName;
         this.department = department;
         this.salary = salary;
+        this.id = counter++;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
+    public String getFullName() {
+        return fullName;
     }
 
     public int getDepartment() {
@@ -32,6 +23,10 @@ public class Employee {
 
     public double getSalary() {
         return salary;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setDepartment(int department) {
