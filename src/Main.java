@@ -9,12 +9,7 @@ public class Main {
         Employee employees3 = new Employee("Sidorov Vasiliy Sidorovich", 2, 120_000);
         Employee employees4 = new Employee("Musk Ilon Batkovich", 3, 156_000);
 
-        System.out.println(employees1);
-        System.out.println(employees2);
-        System.out.println(employees3);
-        System.out.println(employees4);
-
-        employees.printEmployeeNames();
+        printAllEmployees(employees);
     }
 
     public static void addEmployeeToEmployees(Employee[] employees) {
@@ -23,9 +18,10 @@ public class Main {
         }
     }
 
-    public static void printEmployeeNames() {
+    public static void printAllEmployees(Employee[] employees) {
         for (int i = 0; i < employees.length; i++) {
-            System.out.println(employees[i].getFullName());
+            Employee employee = employees[i];
+            System.out.println(employee.getFullName() + ": department # is " + employee.getDepartment() + " salary is " + employee.getSalary());
         }
     }
 }
