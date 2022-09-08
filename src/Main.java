@@ -78,14 +78,12 @@ public class Main {
 
     private static double findAverageSalary() {
         double sum = 0;
-        double averageSalary = 0;
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] != null) {
-                averageSalary = (sum += employees[i].getSalary()) / 9;
+                sum += employees[i].getSalary() / employees.length;
             }
-
         }
-        return averageSalary;
+        return sum;
     }
 
     private static double findSalarySum() {
