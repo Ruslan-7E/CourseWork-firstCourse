@@ -1,40 +1,123 @@
 public class Main {
 
-    private static final Employee[] employees = new Employee[10];
+    public static Employee[] employees = new Employee[10];
 
     public static void main(String[] args) {
-        // Надо ли заполнять произвольные данные всех 10-ти сотрудников. Заполнил.
-        Employee employees1 = new Employee("Ivanov Ivan Ivanovich", 1, 102_000);
-        Employee employees2 = new Employee("Petrov Peter Petrovich", 1, 111_000);
-        Employee employees3 = new Employee("Sidorov Vasiliy Sidorovich", 2, 120_000);
-        Employee employees4 = new Employee("Mukhametshin Ruslan Ildarovich", 2, 136_000);
-        Employee employees5 = new Employee("Vasiliyev Vasiliy Vasiliyevich", 3, 150_000);
-        Employee employees6 = new Employee("Bezos Jeffrey Amazonovich", 3, 156_000);
-        Employee employees7 = new Employee("Pupkin Fedor Anreevich", 4, 166_000);
-        Employee employees8 = new Employee("Guido van Rossum", 4, 177_000);
-        Employee employees9 = new Employee("Gates Bill Microsoftovich", 5, 196_000);
-        Employee employees10 = new Employee("Musk Ilon Batkovich", 5, 199_000);
+        // Заполняем произвольные данные всех 10-ти сотрудников.
+        employees[0] = new Employee("Ivanov Ivan Ivanovich", 1, 102_000);
+        employees[1] = new Employee("Petrov Peter Petrovich", 1, 111_000);
+        employees[2] = new Employee("Sidorov Vasiliy Sidorovich", 2, 120_000);
+//        employees[3] = new Employee("Mukhametshin Ruslan Ildarovich", 2, 136_000);
+        employees[4] = new Employee("Vasiliyev Vasiliy Vasiliyevich", 3, 150_000);
+        employees[5] = new Employee("Bezos Jeffrey Amazonovich", 3, 156_000);
+        employees[6] = new Employee("Pupkin Fedor Andreevich", 4, 166_000);
+        employees[7] = new Employee("Guido van Rossum", 4, 177_000);
+        employees[8] = new Employee("Gates Bill Microsoftovich", 5, 196_000);
+        employees[9] = new Employee("Musk Ilon Batkovich", 5, 199_000);
 
-        System.out.println(employees1);
+        // находим сотрудника с мин ЗП
+        Employee minSalaryEmployee = findMinSalary();
+        System.out.println(minSalaryEmployee);
 
-        findMinSalary();
+        // находим сотрудника с макс ЗП
+        Employee maxSalaryEmployee = findMaxSalary();
+        System.out.println(maxSalaryEmployee);
 
+        System.out.println();
+
+        // находим среднее значение ЗП
+        double averageSalaryAmount = findAverageSalary();
+        System.out.println("Среднее значение зарплат: " + averageSalaryAmount);
+
+        // находим сумму затрат на ЗП в месяц
+        double monthSalarySum = findSalarySum();
+        System.out.println("Сумма затрат на ЗП за месяц: " + monthSalarySum);
+
+        System.out.println();
+
+        // печатаем список имен всех сотрудников
+        printListOfEmployees();
+
+        System.out.println();
+
+        // печатаем полную инфо (текущую) о сотрудниках
+        printFullInfo();
+
+        System.out.println();
+
+        // добавляем нового сотрудника в массив
+        addNewEmployee(new Employee("Mukhametshin Ruslan Ildarovich", 2, 136_000));
+
+        // печатаем обновленную инфо о сотрудниках
+        printFullInfo();
     }
 
-    private static Employee addEmployeeToEmployees(String fullName, int department, double salary, int id) {
-        Employee employees5 = new Employee("Name Surname Patronymic", 5, 160_000);
-        employees[id++] = employees5;
-        return employees5;
+    public static Employee findMinSalary() {
+        double minSalary = employees[9].getSalary();
+        Employee employee = null;
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null && employees[i].getSalary() < minSalary) {
+                minSalary = employees[i].getSalary();
+                employee = employees[i];
+            }
+        }
+        return employee;
     }
 
-    private static void findMinSalary() {
-        double minSalary = 200_000;
-        for (Employee employee : employees) {
-            if (employee.getSalary() < minSalary) {
-                minSalary = employee.getSalary();
+    public static Employee findMaxSalary() {
+        double maxSalary = employees[0].getSalary();
+        Employee employee = null;
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null && employees[i].getSalary() > maxSalary) {
+                maxSalary = employees[i].getSalary();
+                employee = employees[i];
+            }
+        }
+        return employee;
+    }
+
+    public static double findAverageSalary() {
+        double sum = 0;
+        double averageSalary = 0;
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null) {
+                averageSalary = (sum += employees[i].getSalary()) / 9;
+            }
+
+        }
+        return averageSalary;
+    }
+
+    public static double findSalarySum() {
+        double sum = 0;
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null) {
+                sum += employees[i].getSalary();
+            }
+        }
+        return sum;
+    }
+
+    public static void printListOfEmployees() {
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null) {
+                System.out.println(employees[i].getFullName());
             }
         }
     }
 
+    public static void printFullInfo() {
+        for (int i = 0; i < employees.length; i++) {
+            System.out.println(employees[i]);
+        }
+    }
 
+    public static void addNewEmployee(Employee employee) {
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] == null) {
+                employees[i] = employee;
+                break;
+            }
+        }
+    }
 }

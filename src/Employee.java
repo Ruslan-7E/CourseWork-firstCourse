@@ -1,3 +1,4 @@
+// не трогаем ничего в классе
 public class Employee {
     private final String fullName;
 
