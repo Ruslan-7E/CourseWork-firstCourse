@@ -1,6 +1,6 @@
 public class Main {
 
-    public static Employee[] employees = new Employee[10];
+    private static Employee[] employees = new Employee[10];
 
     public static void main(String[] args) {
         // Заполняем произвольные данные всех 10-ти сотрудников.
@@ -52,9 +52,9 @@ public class Main {
         printFullInfo();
     }
 
-    public static Employee findMinSalary() {
-        double minSalary = employees[9].getSalary();
-        Employee employee = null;
+    private static Employee findMinSalary() {
+        double minSalary = employees[0].getSalary();
+        Employee employee = employees[0];
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] != null && employees[i].getSalary() < minSalary) {
                 minSalary = employees[i].getSalary();
@@ -64,7 +64,7 @@ public class Main {
         return employee;
     }
 
-    public static Employee findMaxSalary() {
+    private static Employee findMaxSalary() {
         double maxSalary = employees[0].getSalary();
         Employee employee = null;
         for (int i = 0; i < employees.length; i++) {
@@ -76,7 +76,7 @@ public class Main {
         return employee;
     }
 
-    public static double findAverageSalary() {
+    private static double findAverageSalary() {
         double sum = 0;
         double averageSalary = 0;
         for (int i = 0; i < employees.length; i++) {
@@ -88,7 +88,7 @@ public class Main {
         return averageSalary;
     }
 
-    public static double findSalarySum() {
+    private static double findSalarySum() {
         double sum = 0;
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] != null) {
@@ -98,7 +98,7 @@ public class Main {
         return sum;
     }
 
-    public static void printListOfEmployees() {
+    private static void printListOfEmployees() {
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] != null) {
                 System.out.println(employees[i].getFullName());
@@ -106,13 +106,13 @@ public class Main {
         }
     }
 
-    public static void printFullInfo() {
+    private static void printFullInfo() {
         for (int i = 0; i < employees.length; i++) {
             System.out.println(employees[i]);
         }
     }
 
-    public static void addNewEmployee(Employee employee) {
+    private static void addNewEmployee(Employee employee) {
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] == null) {
                 employees[i] = employee;
