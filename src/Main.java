@@ -25,16 +25,6 @@ public class Main {
 
         System.out.println();
 
-        // находим среднее значение ЗП
-        double averageSalaryAmount = findAverageSalary();
-        System.out.println("Среднее значение зарплат: " + averageSalaryAmount);
-
-        // находим сумму затрат на ЗП в месяц
-        double monthSalarySum = findSalarySum();
-        System.out.println("Сумма затрат на ЗП за месяц: " + monthSalarySum);
-
-        System.out.println();
-
         // печатаем список имен всех сотрудников
         printListOfEmployees();
 
@@ -47,6 +37,18 @@ public class Main {
 
         // добавляем нового сотрудника в массив
         addNewEmployee(new Employee("Mukhametshin Ruslan Ildarovich", 2, 136_000));
+
+        // находим среднее значение ЗП
+        double averageSalaryAmount = findAverageSalary();
+        System.out.println("Среднее значение зарплат: " + averageSalaryAmount);
+
+        System.out.println();
+
+        // находим сумму затрат на ЗП в месяц
+        double monthSalarySum = findSalarySum();
+        System.out.println("Сумма затрат на ЗП за месяц: " + monthSalarySum);
+
+        System.out.println();
 
         // печатаем обновленную инфо о сотрудниках
         printFullInfo();
