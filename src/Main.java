@@ -80,10 +80,10 @@ public class Main {
         double sum = 0;
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] != null) {
-                sum += employees[i].getSalary() / employees.length;
+                sum += employees[i].getSalary();
             }
         }
-        return sum;
+        return sum / employees.length;
     }
 
     private static double findSalarySum() {
