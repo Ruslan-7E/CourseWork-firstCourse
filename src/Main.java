@@ -80,12 +80,14 @@ public class Main {
 
     private static double findAverageSalary() {
         double sum = 0;
+        double counter = 0;
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] != null) {
+                counter++;
                 sum += employees[i].getSalary();
             }
         }
-        return sum / employees.length;
+        return sum / counter;
     }
 
     private static double findSalarySum() {
